@@ -74,7 +74,7 @@ namespace Biggy.Data.Postgres {
       const int MAGIC_PG_ROW_VALUE_LIMIT = 1000;
       var commands = new List<System.Data.IDbCommand>();
       string insertFormat = "insert into {0} (id, body, created_at) values ";
-      string valueGroupFormat = "({0}, now())";
+      string valueGroupFormat = "({0}::json, now())";
 
       var sb = new StringBuilder();
       var args = new List<object>();
@@ -154,7 +154,7 @@ namespace Biggy.Data.Postgres {
           foreach (var kvp in dc) {
             if (kvp.Key != this.KeyName) {
               args.Add(kvp.Value);
-              string setItem = string.Format(ParameterAssignmentFormat, kvp.Key, paramIndex++.ToString());
+              string setItem = string.Format(ParameterAssignmentFormat + "::json", kvp.Key, paramIndex++.ToString());
               setValueStatements.Add(setItem);
             }
           }

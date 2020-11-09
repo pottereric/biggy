@@ -21,11 +21,15 @@ namespace Tests.Json
         public void Initializes_JsonDb_In_Project_Root_In_Defeault_Folder()
         {
             string projectRoot = Directory.GetParent(@"..\..\").FullName;
-            string expectedDirectory = Path.Combine(projectRoot, @"Data\Json\Biggy.Data.Json");
+            string expectedDirectory = Path.Combine(projectRoot, @"Data\Json\testhost");
 
-            Directory.Delete(expectedDirectory, true);
-            _db = new JsonDbCore();
             bool directoryExists = Directory.Exists(expectedDirectory);
+            if (directoryExists)
+            {
+                Directory.Delete(expectedDirectory, true);
+            }
+            _db = new JsonDbCore();
+            directoryExists = Directory.Exists(expectedDirectory);
 
             Assert.True(_db.DbDirectory == expectedDirectory && directoryExists);
         }

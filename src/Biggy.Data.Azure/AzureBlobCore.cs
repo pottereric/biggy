@@ -39,7 +39,7 @@ namespace Biggy.Data.Azure
         public IEnumerable<T> GetAll<T>()
         {
             var blob = this.CreateBlob<T>();
-            var rawData = blob.DownloadText();
+            var rawData = blob.DownloadTextAsync().GetAwaiter().GetResult();
 
             return JsonConvert.DeserializeObject<IEnumerable<T>>(rawData);
         }
@@ -54,7 +54,7 @@ namespace Biggy.Data.Azure
         private static void AzureBlobCoreSaveToBlob<T>(IEnumerable<T> items, CloudBlockBlob blob)
         {
             var serializedData = JsonConvert.SerializeObject(items);
-            blob.UploadText(serializedData);
+            blob.UploadTextAsync(serializedData).GetAwaiter().GetResult();
         }
 
         private static void SerializerJsonToStream<T>(IEnumerable<T> items, StreamWriter writer)
@@ -82,7 +82,7 @@ namespace Biggy.Data.Azure
             var biggyContainer = this.blobClient.GetContainerReference(this.containerName);
             var blobName = AzureBlobCore.GetBlobName<T>();
 
-            biggyContainer.CreateIfNotExists();
+            biggyContainer.CreateIfNotExistsAsync().GetAwaiter().GetResult();
 
             var blob = biggyContainer.GetBlockBlobReference(blobName);
             return blob;

@@ -11,7 +11,7 @@ namespace Tests.AzureStore
     {
         private int quantityToAdd;
 
-        [Test]
+        //[Test]
         public void Azure_Blob_SaveToAzureExampleData()
         {
             // Given
@@ -24,7 +24,7 @@ namespace Tests.AzureStore
             // Then
         }
 
-        [Test]
+        //[Test]
         public void Azure_Blob_ReadFromBlob()
         {
             // Given

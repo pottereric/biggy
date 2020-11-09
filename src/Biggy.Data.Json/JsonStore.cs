@@ -126,7 +126,7 @@ namespace Biggy.Data.Json
         {
             if (String.IsNullOrWhiteSpace(this.TableName))
             {
-                this.TableName = Inflector.Inflector.Pluralize(typeof(T).Name.ToLower());
+                this.TableName = new Pluralize.NET.Core.Pluralizer().Pluralize(typeof(T).Name.ToLower());
             }
             return this.TableName;
         }

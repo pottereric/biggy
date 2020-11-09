@@ -1,159 +1,29 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B0BBD31B-49BC-42C5-806F-2D8B5F32C131}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>Tests</RootNamespace>
-    <AssemblyName>Tests</AssemblyName>
-    <NuGetPackageImportStamp>fcedc466</NuGetPackageImportStamp>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile />
+    <TargetFramework>net5.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="Microsoft.Data.Edm, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Data.Edm.5.6.2\lib\net40\Microsoft.Data.Edm.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.OData, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Data.OData.5.6.2\lib\net40\Microsoft.Data.OData.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.Services.Client, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Data.Services.Client.5.6.2\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Configuration">
-      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.1.8.0.0\lib\net35-full\Microsoft.WindowsAzure.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Storage, Version=4.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\WindowsAzure.Storage.4.3.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.core">
-      <HintPath>..\packages\NUnitTestAdapter.1.2\lib\nunit.core.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.core.interfaces">
-      <HintPath>..\packages\NUnitTestAdapter.1.2\lib\nunit.core.interfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.util">
-      <HintPath>..\packages\NUnitTestAdapter.1.2\lib\nunit.util.dll</HintPath>
-    </Reference>
-    <Reference Include="NUnit.VisualStudio.TestAdapter">
-      <HintPath>..\packages\NUnitTestAdapter.1.2\lib\NUnit.VisualStudio.TestAdapter.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="Mono.Data.Sqlite" />
-    <Reference Include="System.configuration" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Data.SQLite">
-      <HintPath>..\packages\System.Data.SQLite.Core.1.0.94.0\lib\net40\System.Data.SQLite.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Spatial, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Spatial.5.6.2\lib\net40\System.Spatial.dll</HintPath>
-    </Reference>
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="AzureStore\AzureBlobTest.cs" />
-    <Compile Include="AzureStore\AzureStoreUsingBlobWithStringKey.cs" />
-    <Compile Include="BiggyList\BiggyListWithJsonStore.cs" />
-    <Compile Include="BiggyList\BiggyListWithSqliteDocumentStore.cs" />
-    <Compile Include="BiggyList\BiggyListWithPgDocumentStore.cs" />
-    <Compile Include="BiggyList\BiggyListWithSqliteRelationalStore.cs" />
-    <Compile Include="BiggyList\BiggyListWithPgRelationalStore.cs" />
-    <Compile Include="InMemory\ItemsAreEqualsByReferenceTests.cs" />
-    <Compile Include="JsonDb\jsonStoreWithStringKey.cs" />
-    <Compile Include="JsonDb\jsonDbCore.Tests.cs" />
-    <Compile Include="pgDbCore\pgDbCore.Tests.cs" />
-    <Compile Include="PostgresDocuments\PgDocumentStoreWithIntKeyAttribute.cs" />
-    <Compile Include="PostgresDocuments\PgDocumentStoreWithSerialKey.cs" />
-    <Compile Include="PostgresDocuments\PgDocumentStoreWithStringKey.cs" />
-    <Compile Include="PostgresDocuments\pgDocumentStoreWithStringKeyAttribute.cs" />
-    <Compile Include="PostgresRelationalStore\PgRelationalStoreWithPgNameAttributes.cs" />
-    <Compile Include="PostgresRelationalStore\PgRelationalStoreWithPgNames.cs" />
-    <Compile Include="PostgresRelationalStore\PgRelationalStoreWithStringKey.cs" />
-    <Compile Include="PostgresRelationalStore\PgRelationalStoreWithSerialKey.cs" />
-    <Compile Include="RelationalTestObjects.cs" />
-    <Compile Include="sqliteDbCore\sqliteDbCore.Tests.cs" />
-    <Compile Include="SqliteDocuments\sqliteDocumentStoreWithAutoIntKey.cs" />
-    <Compile Include="SqliteDocuments\sqliteDocumentStoreWithIntKeyAttribute.cs" />
-    <Compile Include="SqliteDocuments\sqliteDocumentStoreWithStringKey.cs" />
-    <Compile Include="SqliteDocuments\sqliteDocumentStoreWithStringKeyAttribute.cs" />
-    <Compile Include="DocumentTestObjects.cs" />
-    <Compile Include="sqliteRelationalStore\sqliteRelationalStoreWithPgNameAttributes.cs" />
-    <Compile Include="sqliteRelationalStore\sqliteRelationalStoreWithUnderscoreNames.cs" />
-    <Compile Include="sqliteRelationalStore\sqliteRelationalStoreWithSerialKey.cs" />
-    <Compile Include="sqliteRelationalStore\sqliteRelationalStoreWithStringKey.cs" />
+    <ProjectReference Include="..\src\Biggy.Core\Biggy.Core.csproj" />
+    <ProjectReference Include="..\src\Biggy.Data.Azure\Biggy.Data.Azure.csproj" />
+    <ProjectReference Include="..\src\Biggy.Data.Json\Biggy.Data.Json.csproj" />
+    <ProjectReference Include="..\src\Biggy.Data.Postgres\Biggy.Data.Postgres.csproj" />
+    <ProjectReference Include="..\src\Biggy.Data.Sqlite\Biggy.Data.Sqlite.csproj" />
   </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+
   <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
+    <None Update="app.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DbScripts\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\src\Biggy.Core\Biggy.Core.csproj">
-      <Project>{539CDF13-4CD2-41C2-9284-A7020A2563D4}</Project>
-      <Name>Biggy.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\src\Biggy.Data.Azure\Biggy.Data.Azure.csproj">
-      <Project>{b46196bd-2f6d-470c-ba51-6e5b3839419b}</Project>
-      <Name>Biggy.Data.Azure</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\src\Biggy.Data.Json\Biggy.Data.Json.csproj">
-      <Project>{E293E04A-2B12-4E31-93EC-62FF14FA2306}</Project>
-      <Name>Biggy.Data.Json</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\src\Biggy.Data.Postgres\Biggy.Data.Postgres.csproj">
-      <Project>{44FC2E62-4266-4054-B9C4-6E5546DA6352}</Project>
-      <Name>Biggy.Data.Postgres</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\src\Biggy.Data.Sqlite\Biggy.Data.Sqlite.csproj">
-      <Project>{1ADC5E03-B5B8-4B59-A8DF-1F1A85E63558}</Project>
-      <Name>Biggy.Data.Sqlite</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.94.0\build\net40\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.94.0\build\net40\System.Data.SQLite.Core.targets'))" />
-  </Target>
-  <Import Project="..\packages\System.Data.SQLite.Core.1.0.94.0\build\net40\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.94.0\build\net40\System.Data.SQLite.Core.targets')" />
+
 </Project>

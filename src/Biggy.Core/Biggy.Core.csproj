@@ -1,85 +1,12 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{539CDF13-4CD2-41C2-9284-A7020A2563D4}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>Biggy.Core</RootNamespace>
-    <AssemblyName>Biggy</AssemblyName>
-    <NuGetPackageImportStamp>a1ec8a65</NuGetPackageImportStamp>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
+    <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="Inflector">
-      <HintPath>..\..\packages\Inflector.1.0.0.0\lib\net40\Inflector.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\packages\Newtonsoft.Json.6.0.7\lib\net40\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Mono.Data.Sqlite" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Mono.Security">
-      <HintPath>..\..\packages\Npgsql.2.2.2\lib\net40\Mono.Security.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Pluralize.NET.Core" Version="1.0.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Attributes.cs" />
-    <Compile Include="DbColumnMapping.cs" />
-    <Compile Include="DbColumnMappingLookUp.cs" />
-    <Compile Include="DbCore.cs" />
-    <Compile Include="DbTableMapping.cs" />
-    <Compile Include="DocumentStoreBase.cs" />
-    <Compile Include="InMemory\IItemsAreEquals.cs" />
-    <Compile Include="InMemory\ItemsAreEqualsById.cs" />
-    <Compile Include="InMemory\ItemsAreEqualsByReference.cs" />
-    <Compile Include="InMemory\ItemsAreEqualsByKey.cs" />
-    <Compile Include="Interfaces\IDbCore.cs" />
-    <Compile Include="Interfaces\IDataStore.cs" />
-    <Compile Include="BiggyList.cs" />
-    <Compile Include="InMemory\ItemComparer.cs" />
-    <Compile Include="RelationalStoreBase.cs" />
-    <Compile Include="Extensions\ObjectExtensions.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Extensions\DataExtensions.cs" />
-    <Compile Include="BiggyEventArgs.cs" />
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="Biggy.Core.csproj.nuspec" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-  </Target>
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+
 </Project>

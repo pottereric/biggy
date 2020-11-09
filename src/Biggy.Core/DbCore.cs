@@ -25,7 +25,7 @@ namespace Biggy.Core {
 
     public DbCore(string connectionStringName) {
       try {
-        this.ConnectionString = ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString;
+                this.ConnectionString = ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString;
       }
       catch {
         throw new InvalidOperationException("Can't find the connection string " + connectionStringName);
@@ -48,7 +48,7 @@ namespace Biggy.Core {
 
       // Set up the default, trying to simple map type name to table name:
       string flattenedItemTypeName = rgx.Replace(itemType.Name.ToLower(), "");
-      string plural = Inflector.Inflector.Pluralize(flattenedItemTypeName);
+      string plural = new Pluralize.NET.Core.Pluralizer().Pluralize(flattenedItemTypeName);
       var dbTableName = this.DbTableNames.FirstOrDefault(t => rgx.Replace(t.ToLower(), "") == flattenedItemTypeName);
       if (dbTableName == null) {
         dbTableName = this.DbTableNames.FirstOrDefault(t => rgx.Replace(t.ToLower(), "") == plural);

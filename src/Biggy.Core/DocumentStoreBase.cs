@@ -9,7 +9,8 @@ using Newtonsoft.Json;
 using System.Data;
 
 namespace Biggy.Core {
-  public abstract class DocumentStoreBase<T> : IDataStore<T> where T : new() {
+
+    public abstract class DocumentStoreBase<T> : IDataStore<T> where T : new() {
 
     public IDbCore Database { get; protected set; }
 
@@ -58,7 +59,7 @@ namespace Biggy.Core {
 
     protected virtual string DecideTableName() {
       if (String.IsNullOrWhiteSpace(this.TableName)) {
-        this.TableName = Inflector.Inflector.Pluralize(typeof(T).Name.ToLower());
+        this.TableName = new Pluralize.NET.Core.Pluralizer().Pluralize(typeof(T).Name.ToLower());
       }
       return this.TableName;
     }

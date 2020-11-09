@@ -5,6 +5,8 @@ using Biggy.Core;
 using Biggy.Data.Postgres;
 using NUnit.Framework;
 
+// Docker command to run Postgres
+
 namespace Tests {
   [TestFixture()]
   [Category("Biggy List with PG Document Store")]

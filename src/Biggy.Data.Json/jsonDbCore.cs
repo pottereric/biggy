@@ -34,7 +34,7 @@ namespace Biggy.Data.Json {
     public virtual string GetDefaultDirectory() {
       string defaultDirectory = "";
       var currentDir = Directory.GetCurrentDirectory();
-      if (currentDir.EndsWith("Debug") || currentDir.EndsWith("Release")) {
+      if (currentDir.EndsWith(@"Debug\net5.0") || currentDir.EndsWith(@"Release\net5.0")) {
         var projectRoot = Directory.GetParent(@"..\..\").FullName;
         defaultDirectory = Path.Combine(projectRoot, @"Data\Json", this.DatabaseName);
       }
